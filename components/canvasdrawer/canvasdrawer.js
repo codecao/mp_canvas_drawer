@@ -113,8 +113,9 @@ Component({
       }
       this.ctx.draw(false, () => {
         wx.setStorageSync('canvasdrawer_pic_cache', this.cache)
+        const system = wx.getSystemInfoSync().system
         if (/ios/i.test(system)) {
-          this.saveImageToLocal();
+          this.saveImageToLocal()
         } else {
           // 延迟保存图片，解决安卓生成图片错位bug。
           setTimeout(() => {
